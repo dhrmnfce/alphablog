@@ -12,9 +12,13 @@ $gray-medium-light: #eaeaea;
 }
 
 /* Universal */
+.navbar {
+  border-radius:0;
+  margin-bottom:0;
+}
 
 body {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 
 section {
@@ -34,7 +38,40 @@ textarea {
 }
 
 .jumbotron {
-  margin-top: -15px;
+  background-image: asset-url("blogging.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 95.5vh;
+  padding-top: 20vh;
+}
+
+.jumbotron h1 {
+  font-weight: bold;
+}
+
+.container {
+  padding: 0;
+  margin: 0, auto, 0, auto;
+}
+
+.jumbotron .container{
+  background-color: rgba(255,255,255,.75);
+  border-radius: 1em;
+  height: 30vh;
+  min-height: 180px;
+}
+
+.jumbotron .container .btn-primary{
+  color: #333;
+  background-color: transparent;
+  border: 2px solid #333;
+  transition: background-color .5s ease-out, color .5s ease-out;
+  
+  &:hover, &:active {
+    color: #fff;
+    background-color: #333;
+    transition: background-color .5s ease-in, color .5s ease-in;
+  }
 }
 
 /* typography */
@@ -71,9 +108,8 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 15px;
   font-weight: bold;
   
   &:hover {
@@ -86,7 +122,7 @@ p {
 
 footer {
   margin-top: 45px;
-  padding-top: 5px;
+  padding: 5px 15px 0 15px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
   

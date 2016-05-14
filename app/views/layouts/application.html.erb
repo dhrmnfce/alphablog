@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>AlphaBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,11 +12,20 @@
   
   <%= render 'layouts/header' %>
   
-  <div class="container">
+  <% if current_page?(root_url) %>
     <%= render 'layouts/messages' %>
     <%= yield %>
-    <%= render 'layouts/footer' %>
-  </div>
+    <div class="container">
+      <%= render 'layouts/footer' %>
+    </div>
+  <% else %>
+    <div class="container">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+  <% end %>
+  
   
   <div class="col-md-6 col-md-offset-3">
       <%= debug(params) if Rails.env.development? %>
