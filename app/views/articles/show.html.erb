@@ -1,12 +1,11 @@
-<h1>Article:<br/><%= @article.title %></h1>
-<h2><%= @article.title %></h2>
-
-<p><%= @article.description %></p>
-
-<p>
-    <%= link_to "Edit article", edit_article_path(@article) %>
-</p>
-
-<p>
-    <%= link_to "Back to articles index", articles_path %>
-</p>
+<div class="row">
+    <h1 id="art_title"><%= @article.title %></h1>
+    <h2 id="art_auth">By Dylan</h2>
+    <div class="well col-xs-8 col-xs-offset-2">
+        <%= simple_format(@article.description) %>
+        <hr>
+        <%= link_to "Edit article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+        <%= link_to "Delete article", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
+        <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
+    </div>
+</div>
