@@ -1,6 +1,8 @@
 <div class="row">
     <h1 id="art_title"><%= @article.title %></h1>
-    <h2 id="art_auth">By Dylan</h2>
+    <% if @article.user %>
+        <h2 id="art_auth">By <%= @article.user.username %></h2>
+    <% end %>
     <div class="well col-xs-8 col-xs-offset-2">
         <%= simple_format(@article.description) %>
         <hr>
