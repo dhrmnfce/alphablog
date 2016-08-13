@@ -1,6 +1,7 @@
 <div class="row">
     <h1 id="art_title"><%= @article.title %></h1>
     <% if @article.user %>
+        <div align="center"><%= link_to gravatar_for(@article.user), user_path(@article.user) %></div>
         <h2 id="art_auth">By <%= @article.user.username %></h2>
     <% end %>
     <div class="well col-xs-8 col-xs-offset-2">

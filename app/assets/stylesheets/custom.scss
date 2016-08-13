@@ -116,6 +116,28 @@ h2 {
   color: gray;
 }
 
+.art_title_grav{
+  align: center;
+}
+
+.user_list{
+  list-style: none;
+}
+
+.user_list:hover{
+  text-decoration:none;
+}
+
+.user_listing{
+  li:first-of-type{
+    float:left;
+    padding-left:0;
+  }
+  li{
+    padding-left: 15px;
+  }
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
