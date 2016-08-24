@@ -7,7 +7,7 @@
             <% if article.user %>
                 <h6>Created by: <%= article.user.username %></h6>
             <% end %>
-            <% if logged_in? && article.user == current_user %>
+            <% if logged_in? && (article.user == current_user || current_user.admin?) %>
                 <%= link_to "Edit article", edit_article_path(article), class: 'btn btn-xs btn-primary' %>
                 <%= link_to "Delete article", article_path(article), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-xs btn-danger' %>
             <% end %>
