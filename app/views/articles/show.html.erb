@@ -7,8 +7,10 @@
     <div class="well col-xs-8 col-xs-offset-2">
         <%= simple_format(@article.description) %>
         <hr>
-        <%= link_to "Edit article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
-        <%= link_to "Delete article", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
-        <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
+        <% if logged_in? && @article.user == current_user %>
+            <%= link_to "Edit article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete article", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
+        <% end %>
+        <%= link_to "Back to articles", articles_path, class: "btn btn-xs btn-success" %>
     </div>
 </div>
