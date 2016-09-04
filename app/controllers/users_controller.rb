@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:edit, :update, :show]
     before_action :require_user, only: [:index]
-    before_action :require_same_user, only: [:edit, :update]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+    before_action :require_admin, only: [:destroy]
     
     def index
         @users = User.order("created_at DESC").paginate(page: params[:page], per_page: 5)
@@ -38,6 +39,13 @@ class UsersController < ApplicationController
         @user_articles = @user.articles.order("created_at DESC").paginate(page: params[:page], per_page: 5)
     end
     
+    def destroy
+        set_user
+        @user.destroy
+        flash[:success] = "User and subsequent articles destroyed"
+        redirect_to users_path
+    end
+    
     private
     
         def user_params
@@ -49,9 +57,16 @@ class UsersController < ApplicationController
         end
         
         def require_same_user
-            if !logged_in? || current_user != @user
+            if current_user != @user || !current_user.admin?
                 flash[:danger] = "Reported"
                 redirect_to users_path
+            end
+        end
+        
+        def require_admin
+            if logged_in and current_user.admin?
+                flash[:danger] = "Not admin."
+                redirect_to root_path
             end
         end
     

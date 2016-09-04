@@ -9,6 +9,9 @@
                 <% if user.articles.any? %>
                     <li class="user_list"><h2><%= pluralize(user.articles.count, "article") %></h2></li>
                 <% end %>
+                <% if user == current_user || current_user.admin? %>
+                        <%= link_to "Delete Account", user_path(user), method: :delete, data: { confirm: "Are you sure?" } %>
+                <% end %>
             </div>
         </div>
     </ul>
