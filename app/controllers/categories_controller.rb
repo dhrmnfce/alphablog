@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+    before_action :require_admin, except: [:index, :show]
+    
 
     def index
         @categories = Category.paginate(page: params[:page], per_page: 5)
@@ -30,6 +32,13 @@ class CategoriesController < ApplicationController
         
         def setup_category
             @category = Category.findby(:name)
+        end
+        
+        def require_admin
+           if !logged_in? || (logged_in? && !current_user.admin?)
+               flash[:danger] = "Admin?... Is that you? Log in."
+               redirect_to categories_path
+           end
         end
 
 end
