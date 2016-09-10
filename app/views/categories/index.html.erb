@@ -7,6 +7,7 @@
                 <h2 class="cat_list">
                     <%= link_to "#{category.name}", category_path(category) %>
                 </h2>
+                <small><%= pluralize(category.articles.count, "article") %></small>
             </div>
         </div>
     <% end %>

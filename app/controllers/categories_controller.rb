@@ -21,7 +21,8 @@ class CategoriesController < ApplicationController
     end
 
     def show
-        
+        setup_category
+        @category_articles = @category.articles.order("created_at DESC").paginate(page: params[:page], per_page: 5)
     end
     
     private
@@ -31,7 +32,7 @@ class CategoriesController < ApplicationController
         end
         
         def setup_category
-            @category = Category.findby(:name)
+            @category = Category.find(params[:id])
         end
         
         def require_admin

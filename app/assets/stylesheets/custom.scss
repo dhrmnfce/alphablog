@@ -124,6 +124,18 @@ h2 {
   align: center;
 }
 
+.badge {
+  background-color: rgba(200,200,200,1);
+}
+
+.badge a {
+  text-decoration: none;
+}
+
+.input_checkbox input{
+  width: auto !important;
+}
+
 .user_list{
   list-style: none;
 }
