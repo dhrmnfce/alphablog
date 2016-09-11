@@ -19,6 +19,20 @@ class CategoriesController < ApplicationController
             render 'new'
         end
     end
+    
+    def edit
+        setup_category
+    end
+
+    def update
+        setup_category
+        if @category.update(category_params)
+            flash[:success] = "Category name successfully updated"
+            redirect_to category_path(@category)
+        else
+            
+        end
+    end
 
     def show
         setup_category
